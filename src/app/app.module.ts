@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,6 +9,16 @@ import { BusinesscardsComponent } from './businesscards/businesscards.component'
 import { NotfoundComponent } from './notfound/notfound.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
+import { AuthGuard } from './auth-guard.service';
+import { AuthService } from './auth.service';
+
+const appRoutes: Routes = [
+  { path: '', canActivate: [AuthGuard], component: BusinesscardsComponent },
+  { path: 'signin', component: SigninComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'notfound', component: NotfoundComponent }, 
+  { path: '**', redirectTo: '/notfound' }  
+]
 
 @NgModule({
   declarations: [
@@ -20,9 +31,10 @@ import { SigninComponent } from './auth/signin/signin.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
