@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from '../environments/environment';
 import * as firebase from 'firebase';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,6 +10,9 @@ import * as firebase from 'firebase';
 })
 export class AppComponent implements OnInit {
   title = 'bcards-ver-num01';
+
+
+  
 
   ngOnInit() {
     firebase.initializeApp(environment.firebaseConfig);

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +13,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
+import { ServerService } from './server.service';
 
 const appRoutes: Routes = [
   { path: '', canActivate: [AuthGuard], component: BusinesscardsComponent },
@@ -34,9 +36,10 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, ServerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
