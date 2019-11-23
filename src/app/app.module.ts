@@ -17,6 +17,7 @@ import { ServerService } from './server.service';
 
 const appRoutes: Routes = [
   { path: '', canActivate: [AuthGuard], component: BusinesscardsComponent },
+  { path: 'bcard', canActivate: [AuthGuard], component: BusinesscardsComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'notfound', component: NotfoundComponent }, 
