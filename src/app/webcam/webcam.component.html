@@ -18,7 +18,7 @@
 <div class="snapshot" *ngIf="webcamImage">
   <h2>Nice one!</h2>
   <img [src]="webcamImage.imageAsDataUrl"/><br />
-  <a [routerLink]="['/']" routerLinkActive="router-link-active">Save image and text as card and return to cards list</a><br /><br />
+  <button class="actionBtn" [routerLink]="['/']" routerLinkActive="router-link-active">Save image and text as card and return to cards list</button><br /><br />
 </div>
 
 <h4 *ngIf="errors.length > 0">Messages:</h4>

@@ -20,6 +20,9 @@ export class WebcamComponent implements OnInit {
   };
   public errors: WebcamInitError[] = [];
 
+  // URL for Google CloudVision - Key kept in environment.ts
+  public url = "https://vision.googleapis.com/v1/images:annotate?key=${environment.cloudVision}"
+
   // latest snapshot
   public webcamImage: WebcamImage = null;
 
