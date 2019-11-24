@@ -1,9 +1,11 @@
 <div class="container alert alert-secondary" role="alert">
-    The Cards:
+    My saved cards:<br/><br />
     <app-businesscard></app-businesscard>
     <app-businesscard></app-businesscard>
     <app-businesscard></app-businesscard>
     <app-businesscard></app-businesscard>
     <app-businesscard></app-businesscard>
 </div>
-<li><a style="cursor: pointer;" (click)="onLogout()">Logout</a></li>
+<a [routerLink]="['/webcam']" routerLinkActive="router-link-active">Add a new business card (using webcam)</a><br /><br />
+<button class="btn btn-primary" (click)="onLogout()">Logout</button> 
+

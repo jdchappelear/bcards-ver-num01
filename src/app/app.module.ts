@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
+import {WebcamModule} from 'ngx-webcam';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,10 +15,12 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { ServerService } from './server.service';
+import { WebcamComponent } from './webcam/webcam.component';
 
 const appRoutes: Routes = [
   { path: '', component: BusinesscardsComponent, canActivate: [AuthGuard] },
   { path: 'bcard', component: BusinesscardsComponent, canActivate: [AuthGuard] },
+  { path: 'webcam', component: WebcamComponent, canActivate: [AuthGuard] },
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'notfound', component: NotfoundComponent }, 
@@ -31,11 +34,13 @@ const appRoutes: Routes = [
     BusinesscardsComponent,
     NotfoundComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    WebcamComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    WebcamModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes)
