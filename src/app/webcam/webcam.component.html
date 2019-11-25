@@ -41,10 +41,11 @@
         <label for="phone">Phone Number</label>
         <input type="text" class="form-control" id="phone" required [(ngModel)]="customer.phone" name="phone">
       </div>
-      <button class="actionBtn" [routerLink]="['/']" routerLinkActive="router-link-active">Save image and text as card and return to cards list</button><br /><br />  
+      <button type="submit" class="btn btn-success">Submit</button>   <!-- [routerLink]="['/']" routerLinkActive="router-link-active" -->
+      <!-- <button class="actionBtn" [routerLink]="['/']" routerLinkActive="router-link-active">Save image and text as card and return to cards list</button><br /><br /> 
+      --> 
     </form>
   </div>
-   
 
 <h4 *ngIf="errors.length > 0">Messages:</h4>
 <ul *ngFor="let error of errors">

@@ -4,6 +4,8 @@ import {Observable} from 'rxjs';
 import {WebcamImage, WebcamInitError, WebcamUtil} from 'ngx-webcam';
 import { Customer } from '../customer';
 import { CustomerService } from '../customer.service';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +17,7 @@ export class WebcamComponent implements OnInit {
   customer: Customer = new Customer();
   submitted = false;
  
-  constructor(private customerService: CustomerService) { }
+  constructor(private router: Router, private authService: AuthService, private customerService: CustomerService) { }
  
   newCustomer(): void {
     this.submitted = false;
@@ -28,6 +30,8 @@ export class WebcamComponent implements OnInit {
   }
  
   onSubmit() {
+    console.log("A customer: " + this.customer);
+    this.router.navigate(['/bcard']);
     this.submitted = true;
     this.save();
   }  
