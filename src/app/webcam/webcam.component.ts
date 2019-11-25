@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Subject} from 'rxjs';
 import {Observable} from 'rxjs';
 import {WebcamImage, WebcamInitError, WebcamUtil} from 'ngx-webcam';
+import { Customer } from '../customer';
+import { CustomerService } from '../customer.service';
+
 
 @Component({
   selector: 'app-webcam',
@@ -9,6 +12,26 @@ import {WebcamImage, WebcamInitError, WebcamUtil} from 'ngx-webcam';
   styleUrls: ['./webcam.component.css']
 })
 export class WebcamComponent implements OnInit {
+  customer: Customer = new Customer();
+  submitted = false;
+ 
+  constructor(private customerService: CustomerService) { }
+ 
+  newCustomer(): void {
+    this.submitted = false;
+    this.customer = new Customer();
+  }
+ 
+  save() {
+    this.customerService.createCustomer(this.customer);
+    this.customer = new Customer();
+  }
+ 
+  onSubmit() {
+    this.submitted = true;
+    this.save();
+  }  
+
   // toggle webcam on/off
   public showWebcam = true;
   public allowCameraSwitch = true;

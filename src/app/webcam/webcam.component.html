@@ -18,8 +18,33 @@
 <div class="snapshot" *ngIf="webcamImage">
   <h2>Nice one!</h2>
   <img [src]="webcamImage.imageAsDataUrl"/><br />
-  <button class="actionBtn" [routerLink]="['/']" routerLinkActive="router-link-active">Save image and text as card and return to cards list</button><br /><br />
-</div>
+   <h3>Create Customer</h3>
+  <div [hidden]="submitted" style="width: 300px;">
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="firstname">First Name</label>
+        <input type="text" class="form-control" id="firstname" required [(ngModel)]="customer.firstname" name="firstname">
+      </div>
+      <div class="form-group">
+        <label for="lastname">Last Name</label>
+        <input type="text" class="form-control" id="lastname" required [(ngModel)]="customer.lastname" name="lastname">
+      </div>
+      <div class="form-group">
+        <label for="email">E-Mail</label>
+        <input type="text" class="form-control" id="email" required [(ngModel)]="customer.email" name="email">
+      </div>
+      <div class="form-group">
+        <label for="additionalinfo">Additional Info</label>
+        <input type="text" class="form-control" id="additionalinfo" required [(ngModel)]="customer.additionalinfo" name="additionalinfo">
+      </div>  
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="text" class="form-control" id="phone" required [(ngModel)]="customer.phone" name="phone">
+      </div>
+      <button class="actionBtn" [routerLink]="['/']" routerLinkActive="router-link-active">Save image and text as card and return to cards list</button><br /><br />  
+    </form>
+  </div>
+   
 
 <h4 *ngIf="errors.length > 0">Messages:</h4>
 <ul *ngFor="let error of errors">
