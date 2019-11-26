@@ -1,11 +1,11 @@
-<div class="container alert alert-secondary" role="alert">
-    My saved cards:<br/><br />
-    <app-businesscard></app-businesscard>
-    <app-businesscard></app-businesscard>
-    <app-businesscard></app-businesscard>
-    <app-businesscard></app-businesscard>
-    <app-businesscard></app-businesscard>
+<h1>Business Cards</h1>
+<div *ngFor="let customer of customers" style="width: 300px;">
+  <app-businesscard [customer]='customer'></app-businesscard>
 </div>
+<div style="margin-top:20px;">
+  <button type="button" class="button btn-danger" (click)='deleteCustomers()'>Delete All</button>
+</div>
+<br /><br /><br /><br />
 <a [routerLink]="['/webcam']" routerLinkActive="router-link-active">Add a new business card (using webcam)</a><br /><br />
 <button class="btn btn-primary" (click)="onLogout()">Logout</button> 
 

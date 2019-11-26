@@ -1,3 +1,24 @@
-<div class="container alert alert-primary" role="alert">
-    businesscard.component.html
-</div>
+<div *ngIf="customer">
+    <div>
+      <label>First Name: </label> {{customer.firstname}}
+    </div>
+    <div>
+      <label>Last Name: </label> {{customer.lastname}}
+    </div>
+    <div>
+      <label>E-Mail: </label> {{customer.email}}
+    </div>
+    <div>
+        <label>Additional Info: </label> {{customer.additionalinfo}}
+      </div>
+      <div>
+        <label>Phone: </label> {{customer.phone}}
+      </div>
+      <div>
+        <img [src]="'data:image/jpg;base64,'+customer.imagebase64" />
+      </div>
+        
+    <span class="button is-small btn-danger" (click)='deleteCustomer()'>Delete</span>
+   
+    <hr />
+  </div>

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { CustomerService } from '../customer.service';
+import { Customer } from '../customer';
 
 @Component({
   selector: 'app-businesscard',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BusinesscardComponent implements OnInit {
 
-  constructor() { }
+  @Input() customer: Customer;
+
+  constructor(private customerService: CustomerService) { }
 
   ngOnInit() {
+  }
+
+   
+  deleteCustomer() {
+    this.customerService
+      .deleteCustomer(this.customer.key)
+      .catch(err => console.log(err));
   }
 
 }
