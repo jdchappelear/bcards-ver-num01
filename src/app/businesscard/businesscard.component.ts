@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CustomerService } from '../customer.service';
 import { Customer } from '../customer';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-businesscard',
@@ -9,13 +10,14 @@ import { Customer } from '../customer';
 })
 export class BusinesscardComponent implements OnInit {
 
+  editForm: FormGroup;
+
   @Input() customer: Customer;
 
   constructor(private customerService: CustomerService) { }
 
   ngOnInit() {
   }
-
    
   deleteCustomer() {
     this.customerService
