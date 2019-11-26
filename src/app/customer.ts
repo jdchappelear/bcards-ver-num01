@@ -5,4 +5,5 @@ export class Customer {
     email: string;
     additionalinfo: string;
     phone: string;
+    imagebase64: string;
   }

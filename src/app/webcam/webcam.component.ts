@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {Subject} from 'rxjs';
 import {Observable} from 'rxjs';
 import {WebcamImage, WebcamInitError, WebcamUtil} from 'ngx-webcam';
@@ -6,6 +6,9 @@ import { Customer } from '../customer';
 import { CustomerService } from '../customer.service';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+
+
 
 
 @Component({
@@ -14,6 +17,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./webcam.component.css']
 })
 export class WebcamComponent implements OnInit {
+  @ViewChild('f', {static: false}) mainForm: NgForm;
   customer: Customer = new Customer();
   submitted = false;
  
@@ -30,7 +34,12 @@ export class WebcamComponent implements OnInit {
   }
  
   onSubmit() {
-    console.log("A customer: " + this.customer);
+    console.log(this.mainForm);
+ /*   this.customer.firstname = this.mainForm.controls['firstname'].value;
+    this.customer.firstname = this.mainForm.controls['lastname'].value;
+    this.customer.firstname = this.mainForm.controls['firstname'].value;
+    this.customer.firstname = this.mainForm.controls['firstname'].value;
+    this.customer.firstname = this.mainForm.controls['firstname'].value; */
     this.router.navigate(['/bcard']);
     this.submitted = true;
     this.save();
@@ -67,6 +76,8 @@ export class WebcamComponent implements OnInit {
 
   public triggerSnapshot(): void {
     this.trigger.next();
+    this.customer.imagebase64 = this.webcamImage.imageAsBase64;
+    
   }
 
   public toggleWebcam(): void {

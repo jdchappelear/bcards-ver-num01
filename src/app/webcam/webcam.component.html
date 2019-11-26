@@ -1,5 +1,5 @@
 <div>
-    <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+    <webcam [height]="300" [width]="300" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
             [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
             [videoOptions]="videoOptions"
             [imageQuality]="1"
@@ -20,7 +20,7 @@
   <img [src]="webcamImage.imageAsDataUrl"/><br />
    <h3>Create Customer</h3>
   <div [hidden]="submitted" style="width: 300px;">
-    <form (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onSubmit()" #f="ngForm">
       <div class="form-group">
         <label for="firstname">First Name</label>
         <input type="text" class="form-control" id="firstname" required [(ngModel)]="customer.firstname" name="firstname">
