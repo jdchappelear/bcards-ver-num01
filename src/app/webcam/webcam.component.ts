@@ -7,6 +7,7 @@ import { CustomerService } from '../customer.service';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { ServerService } from '../server.service';
 
 
 
@@ -21,7 +22,7 @@ export class WebcamComponent implements OnInit {
   customer: Customer = new Customer();
   submitted = false;
  
-  constructor(private router: Router, private authService: AuthService, private customerService: CustomerService) { }
+  constructor(private serverService: ServerService, private router: Router, private authService: AuthService, private customerService: CustomerService) { }
  
   newCustomer(): void {
     this.submitted = false;
@@ -49,6 +50,7 @@ export class WebcamComponent implements OnInit {
   public showWebcam = true;
   public allowCameraSwitch = true;
   public multipleWebcamsAvailable = false;
+  public test42;
   public deviceId: string;
   public videoOptions: MediaTrackConstraints = {
     // width: {ideal: 1024},
@@ -77,7 +79,9 @@ export class WebcamComponent implements OnInit {
   public triggerSnapshot(): void {
     this.trigger.next();
     this.customer.imagebase64 = this.webcamImage.imageAsBase64;
+    var test42 = this.serverService.getTextFromImage(this.customer.imagebase64);
     
+    console.log(test42);
   }
 
   public toggleWebcam(): void {

@@ -34,12 +34,12 @@ export class SigninComponent implements OnInit {
     this.authService.signinUser(email, password);
   }
 
-  onSave() {
-    this.serverService.storeServers(this.servers)
+  /*onSave() {
+    this.serverService.storeServers()
       .subscribe(
         (response) => console.log(response),
         (error) => console.log(error)
       );
-  }
+  } */
 
 }
